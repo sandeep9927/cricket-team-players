@@ -1,6 +1,6 @@
 <?php 
-include "../includes/boostrap.php" ;
-include "db.php";
+include "includes/bootstrap.php" ;
+include "includes/db.php";
 ?>
 
 <?php 
@@ -12,8 +12,8 @@ ob_start();
 <?php 
     if(isset($_POST['login']))
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn,$_POST['password']);
 
         $query = "SELECT * FROM login WHERE username = '$username'";
         $login_query = mysqli_query($conn, $query);
@@ -32,25 +32,28 @@ ob_start();
             $db_user_lastname = $row['user_lastname'];
         }
 
-        if($username == $db_username && $password == $db_user_password)
+        if($username === $db_username && $password === $db_user_password)
         {
             $_SESSION['username'] = $db_username;
             $_SESSION['firstname'] = $db_firstname;
             $_SESSION['lastname'] = $db_lastname;
 
-            header("Location: dashboard.php");
+            header("Location: admin");
         }
         else {
-            header("Location: ../index.php");
+            header("Location: index.php");
         }
     }
+
+    if(isset($_POST['back']))
+        header("Location: index.php");
+    
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>Login</title>
-        <!--Made with love by Mutiullah Samim -->
 
         <!--Bootsrap 4 CDN-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -62,7 +65,7 @@ ob_start();
 
         <!--Custom styles-->
         <!-- <link rel="stylesheet" href="../css/login.css"> -->
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>
     <body>
 
@@ -89,6 +92,9 @@ ob_start();
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="login" value="Login" class="btn float-right login_btn">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="back" value="Back" class="btn float-left login_btn">
                             </div>
                         </form>
                     </div>

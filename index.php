@@ -19,7 +19,7 @@
   <a href="#" class="list-group-item list-group-item-action">Chennai Superstars</a>
   <a href="#" class="list-group-item list-group-item-action">Chandigarh Lions.</a>
   <a href="#" class="list-group-item list-group-item-action disabled">Hyderabad Heroes</a>
-  <a href="admin/login.php" class="btn btn-primary btn-lg btn-block">Admin Login</a>
+  <a href="login.php" class="btn btn-primary btn-lg btn-block">Admin Login</a>
   
 </div>
 
