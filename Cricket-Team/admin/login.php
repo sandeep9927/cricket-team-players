@@ -1,7 +1,49 @@
-<!------ Include the above in your HEAD tag ---------->
-<?php include "../includes/boostrap.php" ?>
 <?php 
+include "../includes/boostrap.php" ;
+include "db.php";
+?>
 
+<?php 
+session_start();
+ob_start();
+?>
+
+
+<?php 
+    if(isset($_POST['login']))
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM login WHERE username = '$username'";
+        $login_query = mysqli_query($conn, $query);
+
+        if(!$login_query)
+        {
+            die('Query Failed..!!' . mysqli_error($conn));
+        }
+        
+        while($row = mysqli_fetch_assoc($login_query))
+        {
+            $db_user_id = $row['user_id'];
+            $db_username = $row['username'];
+            $db_user_password = $row['user_password'];
+            $db_user_firstname = $row['user_firstname'];
+            $db_user_lastname = $row['user_lastname'];
+        }
+
+        if($username == $db_username && $password == $db_user_password)
+        {
+            $_SESSION['username'] = $db_username;
+            $_SESSION['firstname'] = $db_firstname;
+            $_SESSION['lastname'] = $db_lastname;
+
+            header("Location: dashboard.php");
+        }
+        else {
+            header("Location: ../index.php");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +71,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Sign In</h3>
-                        <div class="d-flex justify-content-end social_icon">
-                            <span><i class="fab fa-facebook-square"></i></span>
-                            <span><i class="fab fa-google-plus-square"></i></span>
-                            <span><i class="fab fa-twitter-square"></i></span>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form action="login.php" method="post">
@@ -41,30 +78,20 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" name="username" class="form-control" placeholder="username">
+                                <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="off">
 
                             </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="password">
-                            </div>
-                            <div class="row align-items-center remember">
-                                <input type="checkbox">Remember Me
+                                <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn float-right login_btn">
+                                <input type="submit" name="login" value="Login" class="btn float-right login_btn">
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center links">
-                            Don't have an account?<a href="#">Sign Up</a>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="#">Forgot your password?</a>
-                        </div>
                     </div>
                 </div>
             </div>

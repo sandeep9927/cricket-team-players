@@ -1,0 +1,1 @@
+<?php echo "Not an authenticated user"; ?>
