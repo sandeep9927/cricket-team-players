@@ -1,7 +1,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <?php include "../includes/boostrap.php" ?>
 <?php 
-if(isset())
+
 ?>
 
 <!DOCTYPE html>
