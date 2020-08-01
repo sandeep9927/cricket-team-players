@@ -1,4 +1,3 @@
-
 <?php include "includes/db.php" ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,7 @@
 </head>
 <body>
 <div style="height: 50px; width:500px;background-color:aqua; ">
-      <h1 style="text-align: center;"><?php  $team_name; ?> Team Deatails</h1>
+      <h1 style="text-align: center;"><?php  $team_name; ?> Team Details</h1>
     </div>
     <table border="" style="height: 50px; width:500px;background-color:lightpink">
         <thead>
