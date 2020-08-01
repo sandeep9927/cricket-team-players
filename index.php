@@ -1,22 +1,51 @@
-<?php include "includes/header.php"?>
-  <body style="background-image: url('image/dhoni.jpg');">
-  <?php //include "navbar.php"?>
-  <div class="list-group" style="text-align: center; margin-left:25%; margin-right:25%;" >
-      <h3 style="text-align: center;" class="list-group-item list-group-item-action active">Select Team</h3>
-  
-  <a href="team.php" class="list-group-item list-group-item-action">Mumbai Champs.</a>
-  <a href="#" class="list-group-item list-group-item-action">Chennai Superstars</a>
-  <a href="#" class="list-group-item list-group-item-action">Chandigarh Lions.</a>
-  <a href="#" class="list-group-item list-group-item-action disabled">Hyderabad Heroes</a>
-  <a href="login.php" class="btn btn-primary btn-lg btn-block">Admin Login</a>
-  
-</div>
+<?php include "includes/db.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="text-align: center;">
+    <div style="height: 50px; width:500px;background-color:aqua;">
+      <h1 style="text-align: center;">Select Team</h1>
+    </div>
+    <div>
+      <form action="" method="POST">
+      <table border="" style="height: 50px; width:500px;">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>image</th>
+            <th>Team_Name</th>
+            <th>City</th>
+            
+          </tr>
+        </thead>
+        <tbody>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+        <?php 
+          $query = "SELECT * FROM team";
+          $query_run = mysqli_query($conn,$query);
+          while($fetch_team = mysqli_fetch_assoc($query_run)){
+            $team_id = $fetch_team['id'];
+            $team_name = $fetch_team['name'];
+            $team_city = $fetch_team['city'];
+            $team_image = $fetch_team['image'];
+
+            echo "<tr>";
+            echo "<td>$team_id</td>";
+            echo "<td><a href=''><img style='width: 70px; height:50px' src='image/$team_image' alt='no image' class='img-responsive' style=''></a></td>";
+            echo "<td><a href='team_players.php?player_id={$team_id}'>$team_name</a></td>";
+            echo "<td>$team_city</td>";
+            echo "</tr>";
+          }
+        ?>
+        </tbody>
+      </table>
+      </form>
+    </div>
+  </div>
+</body>
 </html>
-
