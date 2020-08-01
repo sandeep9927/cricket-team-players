@@ -33,7 +33,7 @@
                             <tbody>
                                 <?php 
 
-                                    $query = "SELECT * FROM players";
+                                    $query = "SELECT * FROM team_players";
                                     $select_players = mysqli_query($conn, $query);  
 
                                     while($row = mysqli_fetch_assoc($select_players)){
