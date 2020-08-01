@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
+<?php include "includes/header.php"?>
   <body style="background-image: url('image/dhoni.jpg');">
   <?php //include "navbar.php"?>
   <div class="list-group" style="text-align: center; margin-left:25%; margin-right:25%;" >
-      <h3 style="text-align: center;" class="list-group-item list-group-item-action active">Select T    eam</h3>
+      <h3 style="text-align: center;" class="list-group-item list-group-item-action active">Select Team</h3>
   
   <a href="team.php" class="list-group-item list-group-item-action">Mumbai Champs.</a>
   <a href="#" class="list-group-item list-group-item-action">Chennai Superstars</a>
