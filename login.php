@@ -41,7 +41,7 @@ ob_start();
             header("Location: admin");
         }
         else {
-            header("Location: index.php");
+            header("Location: login.php");
         }
     }
 
