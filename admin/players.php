@@ -24,9 +24,7 @@
                                     <th>Player ID</th>
                                     <th>Team ID</th>
                                     <th>Image</th>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Team</th>
+                                    <th>Player name</th>
                                     <th>Jersey Number</th>
                                 </tr>
                             </thead>
@@ -40,18 +38,14 @@
                                         $player_id = $row['player_id'];
                                         $team_id = $row['team_id'];
                                         $player_img = $row['player_img'];
-                                        $player_first_name = $row['player_first_name'];
-                                        $player_last_name = $row['player_last_name'];
-                                        $team_name = $row['team_name'];
+                                        $player_name = $row['player_name'];
                                         $jersey_num = $row['jersey_num'];
 
                                 echo "<tr>";
                                     echo "<td>$player_id</td>";
                                     echo "<td>$team_id</td>";
                                     echo "<td>$player_img</td>";
-                                    echo "<td>$player_first_name</td>";
-                                    echo "<td>$player_last_name</td>";
-                                    echo "<td>$team_name</td>";
+                                    echo "<td>$player_name</td>";
                                     echo "<td>$jersey_num</td>";
                                 echo "<tr>";
                                     }
