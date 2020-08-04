@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Document</title>
 </head>
 <body>
@@ -22,6 +23,7 @@
             <th>Team_Name</th>
             <th>City</th>
             
+            
           </tr>
         </thead>
         <tbody>
@@ -37,9 +39,10 @@
 
             echo "<tr>";
             echo "<td>$team_id</td>";
-            echo "<td><a href=''><img style='width: 70px; height:50px' src='image/$team_image' alt='no image' class='img-responsive' style=''></a></td>";
-            echo "<td><a href='team_players.php?player_id={$team_id}'>$team_name</a></td>";
+            echo "<td><a href='team_players.php?team_id={$team_id}'><img style='width: 70px; height:50px' src='image/$team_image' alt='no image' class='img-responsive' style=''></a></td>";
+            echo "<td><a href='team_players.php?team_id={$team_id}'>$team_name</a></td>";
             echo "<td>$team_city</td>";
+            //echo "<td><a onClick=\"javascript: return confirm('Please confirm deletion');\" href='index.php?delete_team={$team_id}'><i class='fa fa-trash'></i></a></td>";
             echo "</tr>";
           }
         ?>
