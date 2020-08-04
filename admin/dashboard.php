@@ -58,7 +58,7 @@
                                 echo "<td><a href='../team_players.php?team_id={$team_id}'>$team_name</a></td>";
                                 echo "<td>$team_city</td>";
                                 echo "<td><a href='update_teams.php?team_id={$team_id}'>Update</a></td>";
-                                echo "<td><a href='dashboard.php?delete={$team_id}'> Delete</a></td>";
+                                echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='dashboard.php?delete={$team_id}'> Delete</a></td>";
                                 echo "</tr>";
                               }
                             ?>
