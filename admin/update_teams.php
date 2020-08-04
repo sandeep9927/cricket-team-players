@@ -52,7 +52,15 @@
                                 $update_team = mysqli_query($conn, $query);
                                 if(!$update_team){
                                     die("Failed...") . mysqli_error($conn);
+                                }else{
+                                    ?>
+                                    <script>
+                                    alert("Team successfully added")
+                                    window.open("update_teams.php","_self")
+                                    </script>
+                                    <?php
                                 }
+
                             }
                         }
                         ?>
