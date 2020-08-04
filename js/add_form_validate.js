@@ -25,8 +25,8 @@ function validate_form() {
         document.getElementById('jsError').innerHTML = "**only number are valid**"
         return false;
     }
-    if(juersey_number.length<=2 || juersey_number.length>5){
-        document.getElementById('jsError').innerHTML = "**number b/w are only 5 digit**"
+    if(juersey_number.length<=1 || juersey_number.length>4){
+        document.getElementById('jsError').innerHTML = "**number b/w  1 to 3 digit**"
         return false;
     }
     if (image == "") {

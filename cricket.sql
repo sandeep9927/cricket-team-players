@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 06:30 PM
+-- Generation Time: Aug 04, 2020 at 02:03 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -77,8 +77,7 @@ INSERT INTO `team` (`id`, `name`, `city`, `image`) VALUES
 (1, 'Mumbai Champs', 'Mumbai ', 'mi.jpg'),
 (2, 'Chennai Superstars.', 'Chennai', 'Chennai_Smashers.png'),
 (3, 'Chandigarh Lions.', 'Chandigarh', 'chandigrah.jpg'),
-(4, 'Hyderabad Heroes', 'Hyderabad', 'hydrabad.png'),
-(5, 'KKR', 'Kolkata', 'kkr.jpg');
+(4, 'Hyderabad Heroes', 'Hyderabad', 'hydrabad.png');
 
 -- --------------------------------------------------------
 
@@ -99,27 +98,10 @@ CREATE TABLE `team_players` (
 --
 
 INSERT INTO `team_players` (`player_id`, `player_name`, `team_id`, `player_img`, `jersey_num`) VALUES
-(1, 'dhoni', 1, NULL, NULL),
-(2, 'virat kohli', 1, NULL, NULL),
-(3, 'Piyush Chawla', 1, NULL, NULL),
-(4, 'Ishant Sharma', 1, NULL, NULL),
-(5, 'Rohan Gavaskar', 1, NULL, NULL),
-(6, 'Praveen Kumar', 1, NULL, NULL),
-(7, 'Yusuf Pathan', 2, NULL, NULL),
-(8, 'YPragyan Ojha', 2, NULL, NULL),
-(9, 'Abhishek Nayar', 3, NULL, NULL),
-(10, 'Sudeep Tyagi', 3, NULL, NULL),
-(11, 'Ashok Dinda', 3, NULL, NULL),
-(12, 'Pankaj Singh', 3, NULL, NULL),
-(13, 'Rahul Sharma', 4, NULL, NULL),
-(14, 'Stuart Binny', 4, NULL, NULL),
-(15, 'Manish Pandey', 4, NULL, NULL),
-(16, 'Rishi Dhawan', 4, NULL, NULL),
-(17, 'Gyanendra Pandey', 2, NULL, NULL),
-(18, 'Nikhil Chopra', 2, NULL, NULL),
-(19, 'Vinod Kambli', 3, NULL, NULL),
-(20, 'Gursharan Singh', 3, NULL, NULL),
-(21, 'dhoni', 5, NULL, NULL);
+(7, 'dhoni', 1, 'dh.jpg', 123),
+(8, 'virat', 1, 'virat.jpg', 145),
+(9, 'virat', 1, 'virat.jpg', 123),
+(10, 'hardik', 1, 'hardik.jpg', 145);
 
 --
 -- Indexes for dumped tables
@@ -164,7 +146,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `team_players`
 --
 ALTER TABLE `team_players`
-  MODIFY `player_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `player_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -174,7 +156,7 @@ ALTER TABLE `team_players`
 -- Constraints for table `team_players`
 --
 ALTER TABLE `team_players`
-  ADD CONSTRAINT `team_players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`);
+  ADD CONSTRAINT `team_players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
