@@ -17,7 +17,10 @@
                             Welcome
                             <small><?php echo $_SESSION['username'];?></small>
                         </h1>
-                        
+
+                        <div class="col-xs-4" style = "padding:0px">
+                            <a class="btn btn-primary" href="add_team.php">Add New</a>
+                        </div>
                         <table class="table table-bordered table hover">
                             <thead>
                               <tr>
