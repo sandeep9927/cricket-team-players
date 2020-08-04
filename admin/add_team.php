@@ -21,7 +21,6 @@
                         <?php 
                             if(isset($_POST['create_team'])){
 
-                                $team_id = $_POST['team_id'];
                                 $team_name = $_POST['team_name'];
                                 $state = $_POST['state'];
                                 $team_logo = $_FILES['image']['name'];
@@ -29,7 +28,7 @@
 
                                 move_uploaded_file($team_logo_tmp, "../image/$team_logo");
 
-                            $query="INSERT INTO team (id,name,city,image) VALUES ({$team_id},'{$team_name}','{$state}','{$team_logo}')";
+                            $query="INSERT INTO team (name,city,image) VALUES ('{$team_name}','{$state}','{$team_logo}')";
 
                                 $add_new_team = mysqli_query($conn, $query);
 
@@ -40,11 +39,6 @@
                         ?>
                         
                     <form action="" method="post" enctype="multipart/form-data">
-
-                        <div class= "form-group">
-                            <label for="title">Team ID</label>
-                            <input type="text" class="form-control" name="team_id">
-                        </div> 
 
                         <div class= "form-group">
                             <label for="title">Team Name</label>

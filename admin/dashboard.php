@@ -1,4 +1,13 @@
 <?php include "includes/header.php" ?>
+<?php
+ 
+                            if(isset($_GET['delete'])){
+                                $delete_team_id = $_GET['delete'];
+                                $query = "DELETE FROM team WHERE id = {$delete_team_id}";
+
+                                $delete_team = mysqli_query($conn, $query);
+                            } 
+                        ?>
 <body>
 
     <div id="wrapper">
@@ -46,15 +55,16 @@
                                 echo "<tr>";
                                 echo "<td>$team_id</td>";
                                 echo "<td><a href=''><img style='width: 60px; height:40px' src='../image/$team_image' alt='no image' class='img-responsive' style=''></a></td>";
-                                echo "<td><a href='../team_players.php?player_id={$team_id}'>$team_name</a></td>";
+                                echo "<td><a href='../team_players.php?team_id={$team_id}'>$team_name</a></td>";
                                 echo "<td>$team_city</td>";
                                 echo "<td><a href='update_teams.php?team_id={$team_id}'>Update</a></td>";
-                                echo "<td>Delete</td>";
+                                echo "<td><a href='dashboard.php?delete={$team_id}'> Delete</a></td>";
                                 echo "</tr>";
                               }
                             ?>
                             </tbody>
                         </table>
+
                    </div>
                 </div>
             </div>

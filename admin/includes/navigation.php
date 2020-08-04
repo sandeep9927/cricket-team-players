@@ -42,7 +42,7 @@
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-calendar"></i> Match Fixtures</a>
                     </li>
-                    <li>
+                   <!--  <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Team Structure <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
@@ -52,6 +52,7 @@
                                 <a href="#">View All Teams</a>
                             </li>
                         </ul>
+                    </li> -->
                     <li>
                         <a href="players.php"><i class="fa fa-fw fa-user"></i> Players</a>
                     </li>
