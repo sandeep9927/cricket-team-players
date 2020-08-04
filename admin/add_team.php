@@ -34,6 +34,13 @@
 
                                 if(!$add_new_team){
                                     die("Failed...". mysqli_error($conn));
+                                }else{
+                                    ?>
+                                    <script>
+                                    alert("Team successfully added")
+                                    window.open("add_team.php","_self")
+                                    </script>
+                                    <?php
                                 }
                             }
                         ?>
