@@ -1,13 +1,12 @@
 <?php include "includes/header.php" ?>
 <?php
- 
-                            if(isset($_GET['delete'])){
-                                $delete_team_id = $_GET['delete'];
-                                $query = "DELETE FROM team WHERE id = {$delete_team_id}";
+ if(isset($_GET['delete'])){
+    $delete_team_id = $_GET['delete'];
+    $query = "DELETE FROM team WHERE id = {$delete_team_id}";
 
-                                $delete_team = mysqli_query($conn, $query);
-                            } 
-                        ?>
+    $delete_team = mysqli_query($conn, $query);
+} 
+?>
 <body>
 
     <div id="wrapper">
