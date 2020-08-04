@@ -55,6 +55,9 @@
                     <li>
                         <a href="players.php"><i class="fa fa-fw fa-user"></i> Players</a>
                     </li>
+                    <li>
+                        <a href="add_players.php"><i class="fa fa-fw fa-user"></i> ADD Players</a>
+                    </li>
                     </li>
                 </ul>
             </div>
