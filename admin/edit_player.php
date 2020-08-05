@@ -41,7 +41,7 @@
                         $player_name = $row['player_name'];
                         $jersey_num = $row['jersey_num'];
 
-                        if (isset($_POST['update_player'])) {
+                        if (isset($_POST['update_player'])) {   
                             $player_name = $_POST['name'];
                             $jersey_num = $_POST['jsnumber'];
 
@@ -88,7 +88,7 @@
                                     <td><input type="text" name="jsnumber" value="<?php echo  $jersey_num; ?>" id="jsnumber">
                                         <br>
                                         <span id="jsError" style="color: red;"></span></td>
-                                    <td><img width=60 src="../image/<?php echo $team_logo?>"><input type="file" name="image" id="image">
+                                    <td><img width=60 src="../image/<?php echo $player_image?>"><input type="file" name="image" id="image">
                                         <br>
                                         <span id="ImageError" style="color: red;"></span></td>
                                     <td><select name="team" id="" style="width:100px;">
@@ -103,7 +103,7 @@
 
                                         ?>
                                         </select></td>
-                                    <td><input type="submit" name="update_player" value="ADD"></td>
+                                    <td><input type="submit" name="update_player" value="Update"></td>
                                 </tr>
                             </tbody>
                         </table>
