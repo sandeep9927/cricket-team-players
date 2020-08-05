@@ -42,7 +42,7 @@
                     </li>
 
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-calendar"></i> Match Fixtures</a>
+                        <a href="match_fixture.php" ><i class="fa fa-calendar"></i> Match Fixtures</a>
                     </li>
                    <!--  <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Team Structure <i class="fa fa-fw fa-caret-down"></i></a>
@@ -64,7 +64,7 @@
                        $team_id = $fetch_team['id'];}
                     ?>
                     <li>
-                        <?php echo "<a href='players.php?team_id={$team_id}'><i class='fa fa-fw fa-user'></i> show Players</a>" ?>
+                        
                         <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
                     </li>
                 </ul>

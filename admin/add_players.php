@@ -45,7 +45,7 @@
                                 <?php
                                 if (isset($_POST['submit'])) {
                                     $player_name = $_POST['name'];
-                                    echo $player_image = ($_FILES['image']['name']);
+                                    $player_image = ($_FILES['image']['name']);
                                     $player_image_tmp = ($_FILES['image']['tmp_name']);
                                     $Player_Jersey_Number = $_POST['jsnumber'];
                                     $team_id = $_POST['team'];
