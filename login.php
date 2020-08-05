@@ -38,7 +38,7 @@ ob_start();
             $_SESSION['firstname'] = $db_firstname;
             $_SESSION['lastname'] = $db_lastname;
 
-            header("Location: admin");
+            header("Location: admin/dashboard.php");
         }
         else {
             header("Location: login.php");

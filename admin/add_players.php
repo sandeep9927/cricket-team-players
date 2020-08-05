@@ -59,7 +59,7 @@
                                 ?>
                                     <script>
                                         alert("player successfully Added !")
-                                        window.open('add_players.php', '_self')
+                                        window.open('players.php', '_self')
                                     </script>
                                 <?php
                                 } else {
