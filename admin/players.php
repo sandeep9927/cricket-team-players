@@ -41,6 +41,9 @@
                             <small><?php echo $_SESSION['username'];?></small>
                         </h1>
                         <form action="players.php" method="POST" enctype="multipart/form-data">
+                        <div class="col-xs-4" style = "padding:0px">
+                            <a class="btn btn-primary" href="add_players.php">Add Player</a>
+                        </div>
                             <table class="table table-bordered table hover">
                                 <thead>
                                     <tr>

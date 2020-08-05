@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="./dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="./dashboard.php"><i class="fa fa-users"></i> Team Listing</a>
                     </li>
 
                     <li>
@@ -66,10 +66,6 @@
                     <li>
                         <?php echo "<a href='players.php?team_id={$team_id}'><i class='fa fa-fw fa-user'></i> show Players</a>" ?>
                         <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
-                    </li>
-                    <li>
-                        <a href="add_players.php"><i class="fa fa-fw fa-user"></i> ADD Players</a>
-                    </li>
                     </li>
                 </ul>
             </div>
