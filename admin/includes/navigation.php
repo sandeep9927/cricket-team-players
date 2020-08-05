@@ -7,7 +7,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index.php">CTM</a>
+                <!-- <a class="navbar-brand" href="../index.php">CTM</a> -->
+                <a class="navbar-brand" href=""><img src="../image/ckt.jpg" alt="Girl in a jacket"  style=" border-radius: 50%; width:40px;
+"></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -53,8 +55,17 @@
                             </li>
                         </ul>
                     </li> -->
+
+                    <?php 
+                     
+                     $query = "SELECT * FROM team";
+                     $query_run = mysqli_query($conn,$query);
+                     while($fetch_team = mysqli_fetch_assoc($query_run)){
+                       $team_id = $fetch_team['id'];}
+                    ?>
                     <li>
-                        <a href="players.php"><i class="fa fa-fw fa-user"></i> Players</a>
+                        <?php echo "<a href='players.php?team_id={$team_id}'><i class='fa fa-fw fa-user'></i> show Players</a>" ?>
+                        <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
                     </li>
                     <li>
                         <a href="add_players.php"><i class="fa fa-fw fa-user"></i> ADD Players</a>
