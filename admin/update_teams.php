@@ -21,8 +21,8 @@
                         <?php 
                         if(isset($_GET['team_id'])){
                             $get_team_id = $_GET['team_id'];
+                        
                         }
-
                         $query = "SELECT * FROM team WHERE id = '$get_team_id'";
                         $select_teams = mysqli_query($conn, $query);
 
@@ -56,7 +56,7 @@
                                     ?>
                                     <script>
                                     alert("Team successfully added")
-                                    window.open("update_teams.php","_self")
+                                    window.open("dashboard.php","_self")
                                     </script>
                                     <?php
                                 }
