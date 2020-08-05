@@ -1,38 +1,52 @@
-<?php include "includes/db.php" ?>
+<?php include "includes/db.php";
+ ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
+
 <body>
-<?php 
-    if(isset($_GET['delete_player'])){
+    <?php
+    if (isset($_GET['delete_player'])) {
         $delete_player = $_GET['delete_player'];
         $query = "DELETE FROM `team_players` WHERE `player_id` = ' $delete_player '";
-        $delete_query = mysqli_query($conn,$query);
-        if($delete_player){
-            ?>
+        $delete_query = mysqli_query($conn, $query);
+        if ($delete_player) {
+    ?>
             <script>
                 alert("player successfully deleted !")
-                window.open('index.php','_self')
+                window.open('index.php', '_self')
             </script>
-            <?php
-        }else{
-            ?>
+        <?php
+        } else {
+        ?>
             <script>
                 alert("query failed")
-                window.open('team_players.php','_self')
+                window.open('team_players.php', '_self')
             </script>
-            <?php
+    <?php
         }
         //header('location:index.php');
     }
-?>
-<div style="height: 50px; width:500px;background-color:aqua; ">
-      <h1 style="text-align: center;"><?php  $team_name; ?> Team Details</h1>
+    ?>
+    <?php
+    if (isset($_GET['team_id'])) {
+        $team_id = $_GET['team_id'];
+        $team_query = "SELECT * FROM `team` WHERE `id` = {$team_id}";
+        $run = mysqli_query($conn, $team_query);
+        $run = mysqli_fetch_assoc($run);
+        $team_name = $run['name'];
+        
+    }
+
+    ?>
+    <div style="height: 50px; width:500px;background-color:aqua; ">
+        <h1 style="text-align: center;"> <?php echo  $team_name; ?></h1>
     </div>
     <table border="" style="background-color:lightpink">
         <thead>
@@ -44,18 +58,20 @@
                 <th>player jersey</th>
                 <th>Edit</th>
                 <th>Delete</th>
-                
+
             </tr>
         </thead>
         <tbody>
-            <?php 
-            if(isset($_GET['team_id'])){
-                $player_id = $_GET['team_id'];
-                $query = "SELECT * FROM team_players WHERE team_id = {$player_id}";
-                $run = mysqli_query($conn,$query);
+            <?php
+            if (isset($_GET['team_id'])) {
+                $team_id = $_GET['team_id'];
+                $query = "SELECT * FROM team_players WHERE team_id = {$team_id}";
+                $run = mysqli_query($conn, $query);
+
                 $count = 0;
-                while($fetch_team_player = mysqli_fetch_assoc($run)){
+                while ($fetch_team_player = mysqli_fetch_assoc($run)) {
                     $count++;
+
                     $player_name = $fetch_team_player['player_name'];
                     $player_id = $fetch_team_player['player_id'];
                     $player_image = $fetch_team_player['player_img'];
@@ -71,9 +87,10 @@
                     echo "</tr>";
                 }
             }
-        
+
             ?>
         </tbody>
     </table>
 </body>
+
 </html>

@@ -59,10 +59,9 @@
                                 <tbody>
                                     <?php 
                                     
-
                                     $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `team_players` AS p ON t.id = p.team_id ";
-                                    $select_players = mysqli_query($conn, $query); 
-
+                                    $select_players = mysqli_query($conn, $query);  
+                               
                                     while($row = mysqli_fetch_assoc($select_players)){
                                         $player_id = $row['player_id'];
                                         $team_id = $row['team_id'];
@@ -70,6 +69,7 @@
                                         $player_name = $row['player_name'];
                                         $jersey_num = $row['jersey_num'];
                                         $team_name = $row['name'];
+
 
                                 echo "<tr>";
                                     echo "<td>$player_id</td>";
