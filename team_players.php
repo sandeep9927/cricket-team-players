@@ -55,9 +55,6 @@
                 <th>player name</th>
                 <th>player ID</th>
                 <th>player jersey</th>
-                <th>Edit</th>
-                <th>Delete</th>
-
             </tr>
         </thead>
         <tbody>
@@ -81,8 +78,6 @@
                     echo "<td>$player_name</td>";
                     echo "<td>$player_id</td>";
                     echo "<td>$player_jersey_number</td>";
-                    echo "<td><a href='admin/add_players.php?add_player={$player_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
-                    echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='team_players.php?delete_player={$player_id}'><i class='fa fa-trash'></i></a></td>";
                     echo "</tr>";
                 }
             }
