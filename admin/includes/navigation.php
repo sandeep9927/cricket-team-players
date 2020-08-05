@@ -64,7 +64,6 @@
                        $team_id = $fetch_team['id'];}
                     ?>
                     <li>
-                        <?php echo "<a href='players.php?team_id={$team_id}'><i class='fa fa-fw fa-user'></i> show Players</a>" ?>
                         <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
                     </li>
                 </ul>
