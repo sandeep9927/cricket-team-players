@@ -22,7 +22,7 @@
                         if(isset($_GET['team_id'])){
                             $get_team_id = $_GET['team_id'];
                         
-                        }
+
                         $query = "SELECT * FROM team WHERE id = '$get_team_id'";
                         $select_teams = mysqli_query($conn, $query);
 
@@ -56,25 +56,26 @@
                                     ?>
                                     <script>
                                     alert("Team successfully added")
-                                    window.open("dashboard.php","_self")
+                                    window.open("update_teams.php","_self")
                                     </script>
                                     <?php
                                 }
 
                             }
                         }
+                    }
                         ?>
                         
                     <form action="" method="post" enctype="multipart/form-data">
 
                         <div class= "form-group">
                             <label for="title">Team Name</label>
-                            <input value="<?php echo $team_name ?>" type="text" class="form-control" name="team_name">
+                            <input value="<?php echo $team_name; ?>" type="text" class="form-control" name="team_name">
                         </div>
 
                         <div class= "form-group">
                             <label for="post_author">State</label>
-                            <input value="<?php echo $state ?>" type="text" class="form-control" name="state">
+                            <input value="<?php echo $state; ?>" type="text" class="form-control" name="state">
                         </div>
                         
                         <div class= "form-group">

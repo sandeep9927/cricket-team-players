@@ -62,17 +62,20 @@
 
                                     $query = "SELECT * FROM team_players";
                                     $select_players = mysqli_query($conn, $query);  
-
+                               
+                                    // $team_id = $_GET['team_id'];
+                                    // $team_query = "SELECT * FROM `team` WHERE `id` ={$team_id}";
+                                    // $run = mysqli_query($conn, $team_query);
+                                    // $run = mysqli_fetch_assoc($run);
+                                    // $team_name = $run['name'];
                                     while($row = mysqli_fetch_assoc($select_players)){
                                         $player_id = $row['player_id'];
                                         $team_id = $row['team_id'];
                                         $player_image = $row['player_img'];
                                         $player_name = $row['player_name'];
                                         $jersey_num = $row['jersey_num'];
-                                        $select_team = "SELECT * FROM `team`";
-                                        // $select_team_query = mysqli_query($conn, $select_team);
-                                        // $row = mysqli_fetch_assoc($select_team_query);
-                                        // $team_name = $row['name']; 
+                                        
+                                         
                                         
 
                                 echo "<tr>";
