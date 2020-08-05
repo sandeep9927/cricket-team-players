@@ -59,28 +59,21 @@
                                 <tbody>
                                     <?php 
                                     
-
-                                    $query = "SELECT * FROM team_players";
+                                    $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `team_players` AS p ON t.id = p.team_id ";
                                     $select_players = mysqli_query($conn, $query);  
                                
-                                    // $team_id = $_GET['team_id'];
-                                    // $team_query = "SELECT * FROM `team` WHERE `id` ={$team_id}";
-                                    // $run = mysqli_query($conn, $team_query);
-                                    // $run = mysqli_fetch_assoc($run);
-                                    // $team_name = $run['name'];
                                     while($row = mysqli_fetch_assoc($select_players)){
                                         $player_id = $row['player_id'];
                                         $team_id = $row['team_id'];
                                         $player_image = $row['player_img'];
                                         $player_name = $row['player_name'];
                                         $jersey_num = $row['jersey_num'];
-                                        
-                                         
-                                        
+                                        $team_name = $row['name'];
+
 
                                 echo "<tr>";
                                     echo "<td>$player_id</td>";
-                                    echo "<td>$team_id</td>";
+                                    echo "<td>$team_name</td>";
                                     echo "<td><img style='width: 70px; height:50px' src='../image/$player_image' alt='no image' class='img-responsive' style=''></td>";
                     
                                     echo "<td>$player_name</td>";
