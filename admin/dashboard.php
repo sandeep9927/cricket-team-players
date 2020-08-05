@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
                                     <th>image</th>
                                     <th>Team_Name</th>
                                     <th>State</th>
-                                    <th>Update</th>
+                                    <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
