@@ -42,7 +42,7 @@
                     </li>
 
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-calendar"></i> Match Fixtures</a>
+                        <a href="match_fixture.php" ><i class="fa fa-calendar"></i> Match Fixtures</a>
                     </li>
                    <!--  <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Team Structure <i class="fa fa-fw fa-caret-down"></i></a>

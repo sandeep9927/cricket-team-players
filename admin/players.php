@@ -5,7 +5,7 @@
         $delete_player = $_GET['delete_player'];
         $query = "DELETE FROM `team_players` WHERE `player_id` = ' $delete_player '";
         $delete_query = mysqli_query($conn,$query);
-        if($delete_player){
+        if($delete_query){
             ?>
     <script>
     alert("player successfully deleted !")
