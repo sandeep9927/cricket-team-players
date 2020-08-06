@@ -6,6 +6,22 @@ if (isset($_GET['delete'])) {
     $query = "DELETE FROM team WHERE id = {$delete_team_id}";
 
     $delete_team = mysqli_query($conn, $query);
+    if ($delete_team) {
+?>
+
+        <script>
+            alert("player successfully deleted !")
+            window.open('dashboard.php', '_self')
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            alert("query failed")
+            window.open('dashboard.php', '_self')
+        </script>
+<?php
+    }
 }
 ?>
 
@@ -60,9 +76,36 @@ if (isset($_GET['delete'])) {
                                     echo "<td>$team_city</td>";
                                     echo "<td><a href='update_teams.php?team_id={$team_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                     echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='dashboard.php?delete={$team_id}'> <i class='fa fa-trash'></i></a></td>";
+                                    //echo "<td><a href='#myModal'  data-toggle='modal'><i class='fa fa-trash'></i></a></td>";
+
                                     echo "</tr>";
                                 }
                                 ?>
+                                <!-- Modal HTML -->
+                                <div id="myModal" class="modal fade">
+                                    <div class="modal-dialog modal-confirm">
+                                        <div class="modal-content">
+                                            <div class="modal-header flex-column">
+                                                <div class="icon-box">
+                                                    <i class="material-icons">&#xE5CD;</i>
+                                                </div>
+                                                <h4 class="modal-title w-100">Are you sure?</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Do you really want to delete these records? This process cannot
+                                                    be undone.</p>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-danger">
+                                                    <?php
+                                                    echo "<a href='dashboard.php?delete={$team_id}'>Delete</a>";
+                                                    ?></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </tbody>
                         </table>
 
