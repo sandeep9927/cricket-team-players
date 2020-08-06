@@ -1,29 +1,6 @@
 <?php include "includes/header.php" ?>
 
 <body>
-    <?php
-    if (isset($_GET['delete_match'])) {
-        $delete_match = $_GET['delete_match'];
-        $query = "DELETE FROM `match_fixtures` WHERE `matchFixtureID` = '{$delete_match}'";
-        $delete_query = mysqli_query($conn, $query);
-        if ($delete_query) {
-    ?>
-    <script>
-    alert("match successfully deleted !")
-    window.open('show_all_match.php', '_self')
-    </script>
-    <?php
-        } else {
-        ?>
-    <script>
-    alert("query failed")
-    window.open('show_all_match.php', '_self')
-    </script>
-    <?php
-        }
-        //header('location:index.php');
-    }
-    ?>
 
     <div id="wrapper">
 
@@ -59,9 +36,8 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
 
-                                
-                                    $show_query = "SELECT m.*, t.* FROM team AS t RIGHT JOIN match_fixtures AS m ON t.id = m.teamID1";
                                     //$query = "SELECT * FROM match_fixtures";
                                     $select_match = mysqli_query($conn, $show_query);
 
@@ -87,12 +63,53 @@
                                         echo "<td>$matchTime</td>";
                                         echo "<td><a href='edit_match.php?edit_match={$matchFixtureID}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='show_all_match.php?delete_match={$matchFixtureID}'><i class='fa fa-trash'></i></a></td>";
+                                        // echo "<td><a href='#myModal'  data-toggle='modal'><i class='fa fa-trash'></i></a></td>";
 
-                                        echo "<tr>";
-                                    }
+
 
                                     ?>
+                                        <?php
+                                        if (isset($_GET['delete_match'])) {
+                                            $delete_match = $_GET['delete_match'];
+                                            $query = "DELETE FROM `match_fixtures` WHERE `matchFixtureID` = '{$delete_match}'";
+                                            $delete_query = mysqli_query($conn, $query);
+                                        }
 
+                                        ?>
+
+                                        <script>
+                                            function popUp() {
+                                                swal("Good job!", "You clicked the button!", "success");
+                                                window.open("show_all_match.php", "_self");
+                                            }
+                                        </script>
+
+                                        <!-- Modal HTML -->
+                                        <div id="myModal" class="modal fade">
+                                            <div class="modal-dialog modal-confirm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header flex-column">
+                                                        <div class="icon-box">
+                                                            <i class="material-icons">&#xE5CD;</i>
+                                                        </div>
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Do you really want to delete these records? This process cannot
+                                                            be undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button  type="button" class="btn btn-danger">
+                                                            <?php
+                                                            echo "<a onclick='popUp()' href='show_all_match.php?delete_match={$matchFixtureID}'>Delete</a>";
+                                                            echo "<tr>"; ?></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }; ?>
                                 </tbody>
                             </table>
                         </form>
