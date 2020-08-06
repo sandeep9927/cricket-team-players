@@ -1,0 +1,149 @@
+<?php include "includes/header.php" ?>
+
+<body>
+    ?>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <?php include "includes/navigation.php" ?>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="text-center page-header">
+                            Welcome
+                            <small><?php echo $_SESSION['username']; ?></small>
+                        </h1>
+                        <h1  class="text-center page-header">MATCH</h1>
+
+
+                        <?php 
+                                    if(isset($_GET['edit_match'])){
+                                        $get_id_match_edit = $_GET['edit_match'];
+                                    
+                                   
+                                        $query ="SELECT * FROM `match_fixtures` WHERE `matchFixtureID` = '{$get_id_match_edit}'";
+                                        $run = mysqli_query($conn,$query);
+                                        while($row = mysqli_fetch_assoc($run)){
+                                        $teamID1 = $row['teamID1'];
+                                        $teamID2 = $row['teamID2'];
+                                        $venue = $row['venue'];
+                                        $scoreTeam1 = $row['scoreTeam1'];
+                                        $scoreTeam2 = $row['scoreTeam2'];
+                                        $matchDate = $row['matchDate'];
+                                        $matchTime = $row['matchTime'];
+                                        if(isset($_POST['submit'])){
+                                            $teamID1 = $_POST['team1'];
+                                            $teamID2 = $_POST['team2'];
+                                            $venue = $_POST['venue'];
+                                            $scoreTeam1 = $_POST['score1'];
+                                            $scoreTeam2 = $_POST['score2'];
+                                            $matchDate = $_POST['fixdate'];
+                                            $matchTime = $_POST['fixtime'];
+                                            $update_query = "UPDATE `match_fixtures` SET `teamID1`='$teamID1',`teamID2`='$teamID2',`venue`='$venue',`scoreTeam1`='$scoreTeam1',
+                                            `scoreTeam2`='$scoreTeam2',`matchDate`='$matchDate',`matchTime`='$matchTime' WHERE `matchFixtureID` = '$get_id_match_edit'";
+                                            // print_r($update_query);die;
+                                            $upadte_match = mysqli_query($conn,$update_query);
+                                            if ($upadte_match) {
+                                                ?>
+                                                    <script>
+                                                        alert("match successfully Added !")
+                                                        window.open('show_all_match.php', '_self')
+                                                    </script>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <script>
+                                                        alert("Failed to update !")
+                                                        window.open(<?php echo "edit_match.php?edit_match=$get_id_match_edit" ;?>, '_self')
+                                                    </script>
+                                                    <?php
+                                                }
+                                        }
+                                        
+                                    }
+                                }
+                                    ?>
+                        <form method="post" name="form1" action="" enctype="multipart/form-data">
+                            <table  border="1" class="table table-bordered table hover">
+                                <tr>
+                                    
+                                    <td width="73" align="center"><strong>Teams</strong></td>
+                                    <td style="width: 100px;" align="center"><strong>Venue</strong></td>
+                                    <td width="147" align="center"><strong>Date / Time</strong></td>
+                                    <td width="50" ><strong>Team1 Score</strong></td>
+                                    <td width="50" ><strong>Team2 Score</strong></td>
+                                    <td width="64" align="center"><strong>Action</strong></td>
+                                </tr>
+                                <tr>
+                                    
+                                    <td>
+                                        <select name="team1">
+                                            <option value="<?php echo $teamID1;?>"><?php echo $teamID1;?></option>
+                                            <?php
+                                            $select_team = "SELECT * FROM `team`";
+                                            $select_team_query = mysqli_query($conn, $select_team);
+                                            while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
+                                                $team_id = $fetch_all_team['id'];
+                                                $team_name = $fetch_all_team['name'];
+                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                            }?>
+                                        </select>
+
+                                        <select name="team2">
+                                        <option value="<?php echo $teamID2;?>"><?php echo $teamID2;?></option>
+                                            <?php
+                                            $select_team = "SELECT * FROM `team`";
+                                            $select_team_query = mysqli_query($conn, $select_team);
+                                            while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
+                                                $team_id = $fetch_all_team['id'];
+                                                $team_name = $fetch_all_team['name'];
+                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                            }?>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="venue" id="venue" value="<?php echo $venue; ?>">
+                                    </td>
+                                    <td>
+                                        <?php
+                                            $mysqldate = date('Y-m-d');
+                                            $mysqltime = date('h:i:s');
+                                        
+                                        ?>
+                                        <input type="date" name="fixdate" value="<?php echo $matchDate; ?>" /><input type="time" name="fixtime" value="<?php echo $matchTime; ?>" /></td>
+                                        <td ><input type="number" name="score1" style="width:40px"  value="<?php echo $scoreTeam1; ?>"></td>
+                                        <td><input type="number" name="score2" style="width:40px"  value="<?php echo $scoreTeam2; ?>"></td>
+                                    <td><input type="submit" value="submit" name="submit" />
+                                        <input type="reset" />
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

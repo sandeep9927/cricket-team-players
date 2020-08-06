@@ -60,9 +60,10 @@
                                 <tbody>
                                     <?php
 
-                                    //$query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `match_fixtures` AS p ON t.id = p.team_id ";
-                                    $query = "SELECT * FROM match_fixtures";
-                                    $select_match = mysqli_query($conn, $query);
+                                
+                                    $show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
+                                    //$query = "SELECT * FROM match_fixtures";
+                                    $select_match = mysqli_query($conn, $show_query);
 
                                     while ($row = mysqli_fetch_assoc($select_match)) {
                                         $matchFixtureID = $row['matchFixtureID'];
@@ -73,18 +74,19 @@
                                         $scoreTeam2 = $row['scoreTeam2'];
                                         $matchDate = $row['matchDate'];
                                         $matchTime = $row['matchTime'];
+                                        $team_name = $row['name'];
 
 
                                         echo "<tr>";
                                         echo "<td>$matchFixtureID</td>";
-                                        echo "<td>$teamID1</td>";
+                                        echo "<td>$team_name</td>";
                                         echo "<td>$teamID2</td>";
                                         echo "<td>$venue</td>";
                                         echo "<td>$scoreTeam1</td>";
                                         echo "<td>$scoreTeam2</td>";
                                         echo "<td>$matchDate</td>";
                                         echo "<td>$matchTime</td>";
-                                        echo "<td><a href='show_all_match.php?'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
+                                        echo "<td><a href='edit_match.php?edit_match={$matchFixtureID}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='show_all_match.php?delete_match={$matchFixtureID}'><i class='fa fa-trash'></i></a></td>";
 
                                         echo "<tr>";
