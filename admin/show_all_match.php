@@ -61,7 +61,7 @@
                                     <?php
 
                                 
-                                    $show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
+                                    $show_query = "SELECT m.*, t.* FROM team AS t RIGHT JOIN match_fixtures AS m ON t.id = m.teamID1";
                                     //$query = "SELECT * FROM match_fixtures";
                                     $select_match = mysqli_query($conn, $show_query);
 
@@ -75,7 +75,6 @@
                                         $matchDate = $row['matchDate'];
                                         $matchTime = $row['matchTime'];
                                         $team_name = $row['name'];
-
 
                                         echo "<tr>";
                                         echo "<td>$matchFixtureID</td>";
