@@ -3,5 +3,5 @@
 	$_SESSION['username'] = null;
 	$_SESSION['firstname'] = null;
 	$_SESSION['lastname'] = null;
-	header("Location: login.php");
+	header("Location: index.php");
 ?>

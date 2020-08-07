@@ -1,39 +1,18 @@
-<?php include "includes/db.php";?>
+<?php include "includes/db.php" ?>
+<?php include "includes/navbar.php" ?>
+<?php include "includes/bootstrap.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
-</head>
 
-<body>
-    <?php
-    if (isset($_GET['delete_player'])) {
-        $delete_player = $_GET['delete_player'];
-        $query = "DELETE FROM `team_players` WHERE `player_id` = ' $delete_player '";
-        $delete_query = mysqli_query($conn, $query);
-        if ($delete_player) {
-    ?>
-            <script>
-                alert("player successfully deleted !")
-                window.open('index.php', '_self')
-            </script>
+
+<body style="background-color:lightblue;">
+  <div style="text-align: center;">
+
+    <div>
+      <form action="" method="POST">
+        <div class="table-responsive">
         <?php
-        } else {
-        ?>
-            <script>
-                alert("query failed")
-                window.open('team_players.php', '_self')
-            </script>
-    <?php
-        }
-        //header('location:index.php');
-    }
-    ?>
-    <?php
     if (isset($_GET['team_id'])) {
         $team_id = $_GET['team_id'];
         $team_query = "SELECT * FROM `team` WHERE `id` = {$team_id}";
@@ -44,20 +23,21 @@
     }
 
     ?>
-    <div style="height: 50px; width:500px;background-color:aqua; ">
-        <h1 style="text-align: center;"> <?php echo  $team_name; ?></h1>
-    </div>
-    <table border="" style="background-color:lightpink">
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>Photo</th>
-                <th>player name</th>
-                <th>player ID</th>
-                <th>player jersey</th>
-            </tr>
-        </thead>
-        <tbody>
+          <div style="height: 100px; width:700px;background-color:#4CAF50;;margin-left:25%; margin-top:100px">
+            <h1 style="text-align: center; padding-top:25px;"> <?php echo  $team_name; ?></h1>
+          </div>
+          <table border="" style="height: 40px; width:700px;margin-left:25% " class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Photo</th>
+                <th scope="col">player name</th>
+                <th scope="col">player ID</th>
+                <th scope="col">player jersey</th>
+              </tr>
+            </thead>
+
+            <tbody>
             <?php
             if (isset($_GET['team_id'])) {
                 $team_id = $_GET['team_id'];
@@ -84,7 +64,9 @@
 
             ?>
         </tbody>
-    </table>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
-
-</html>
