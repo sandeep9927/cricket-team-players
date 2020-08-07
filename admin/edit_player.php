@@ -54,7 +54,7 @@
                                 $query = "SELECT * FROM team_players WHERE player_id = '$get_player_id'";
                                 $select_image = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($select_image)) {
-                                    $team_logo = $row['player_img'];
+                                    $player_image = $row['player_img'];
                                 }
                             }
                             $query = "UPDATE `team_players` SET `player_name`=' $player_name',`player_img`='$player_image',`jersey_num`='$jersey_num' WHERE `player_id` ='$get_player_id'";

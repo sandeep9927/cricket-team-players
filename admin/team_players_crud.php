@@ -37,10 +37,23 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username'];?></small>
+                            <?php 
+                                if (isset($_GET['team_id'])) {
+                                $team_id = $_GET['team_id'];
+                                $team_query = "SELECT * FROM `team` WHERE `id` = {$team_id}";
+                                $run = mysqli_query($conn, $team_query);
+                                $run = mysqli_fetch_assoc($run);
+                                $team_name = $run['name'];
+                                }
+
+                                echo $team_name;
+                            ?>
+
                         </h1>
                         <table class="table table-bordered table hover">
+                             <div class="col-xs-4" style="padding:0px">
+                                <a class="btn btn-primary" href="add_players.php">Add Player</a>
+                            </div>
                             <thead>
                                 <tr>
                                     <th>Number</th>
