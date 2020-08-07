@@ -13,7 +13,7 @@
       <form action="" method="POST">
         <div class="table-responsive">
           <div style="height: 100px; width:700px;background-color:#4CAF50;;margin-left:25%; margin-top:100px">
-            <h1 style="text-align: center; padding-top:25px;">Select Team</h1>
+            <h1 style="text-align: center; padding-top:25px;">Team List</h1>
           </div>
           <table border="" style="height: 40px; width:700px;margin-left:25% " class="table table-hover">
             <thead>

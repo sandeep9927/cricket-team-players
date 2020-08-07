@@ -14,8 +14,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username'];?></small>
+                            ADD NEW TEAM
                         </h1>
 
                         <?php 
@@ -38,7 +37,7 @@
                                     ?>
                                     <script>
                                     alert("Team successfully added")
-                                    window.open("add_team.php","_self")
+                                    window.open("dashboard.php","_self")
                                     </script>
                                     <?php
                                 }
