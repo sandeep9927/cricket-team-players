@@ -36,27 +36,29 @@
                                 </thead>
                                 <tbody>
                                     <?php
-
-                                    $show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
+                                    //$teamid = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID2";
+                                    //$teamid2 = mysqli_query($conn, $teamid);
+                                    //$show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
+                                    $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
 
                                     //$query = "SELECT * FROM match_fixtures";
                                     $select_match = mysqli_query($conn, $show_query);
 
                                     while ($row = mysqli_fetch_assoc($select_match)) {
                                         $matchFixtureID = $row['matchFixtureID'];
-                                        $teamID1 = $row['teamID1'];
-                                        $teamID2 = $row['teamID2'];
+                                        $teamname1 = $row['team1name'];
+                                        $teamname2 = $row['team2name'];
                                         $venue = $row['venue'];
                                         $scoreTeam1 = $row['scoreTeam1'];
                                         $scoreTeam2 = $row['scoreTeam2'];
                                         $matchDate = $row['matchDate'];
                                         $matchTime = $row['matchTime'];
-                                        $team_name = $row['name'];
+                                        //$team_name = $row['name'];
 
                                         echo "<tr>";
                                         echo "<td>$matchFixtureID</td>";
-                                        echo "<td>$team_name</td>";
-                                        echo "<td>$teamID2</td>";
+                                        echo "<td>$teamname1</td>";
+                                        echo "<td>$teamname2</td>";
                                         echo "<td>$venue</td>";
                                         echo "<td>$scoreTeam1</td>";
                                         echo "<td>$scoreTeam2</td>";
