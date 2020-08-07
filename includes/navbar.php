@@ -12,7 +12,7 @@
 
         .topnav {
             overflow: hidden;
-            background-color: #333;
+            background-color:  #333333;;
         }
 
         .topnav a {
@@ -71,12 +71,11 @@
         </style>
     </head>
     <body>
-
-        <div class="topnav" id="myTopnav">
+    
+        <div class="topnav" id="myTopnav" style="background-color: #232323;">
             <a href="index.php" class="active">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="admin">Admin</a>
+            <a href="admin">Login</a>
+            <!-- <a href="index.php" style="float:right;">Logout</a> -->
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>

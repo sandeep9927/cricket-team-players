@@ -42,14 +42,15 @@
                                         $time = $_POST['fixtime'];
                                         $score1 = $_POST['score1'];
                                         $score2 = $_POST['score2'];
-                                        if ($score1 > $score1) {
+                                        if ($score1 > $score2) {
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
                                             VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','$get_team1')";
                                             $run = mysqli_query($conn, $query);
-                                        } elseif ($score1 < $score1) {
+                                        } elseif($score1 < $score2){
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
                                             VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','$get_team2')";
                                             $run = mysqli_query($conn, $query);
+                                        
                                         } else {
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
                                             VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','Draw')";
