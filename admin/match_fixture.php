@@ -16,21 +16,17 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
-                        </h1>
                         <h1 class="text-center page-header">MATCH</h1>
                         <form method="post" onsubmit="return match_fixture()" action="" enctype="multipart/form-data">
                             <table border="1" class="table table-bordered table hover">
                                 <tr>
 
                                     <td width="73" align="center"><strong>Teams</strong></td>
-                                    <td style="width: 100px;" align="center"><strong>Venue</strong></td>
-                                    <td width="147" align="center"><strong>Date / Time</strong></td>
-                                    <td width="50"><strong>Team1 Score</strong></td>
-                                    <td width="50"><strong>Team2 Score</strong></td>
-                                    <td width="64" align="center"><strong>Action</strong></td>
+                                    <td><strong>Venue</strong></td>
+                                    <td><strong>Date / Time</strong></td>
+                                    <td><strong>Team1 Score</strong></td>
+                                    <td><strong>Team2 Score</strong></td>
+                                    <td><strong>Action</strong></td>
                                 </tr>
                                 <tr>
                                     <?php

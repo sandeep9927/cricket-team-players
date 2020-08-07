@@ -68,7 +68,7 @@
                     ?>
                     <form action="" method="post" enctype="multipart/form-data"
                         onsubmit="return validate_form()">
-                        <table border="">
+                        <table class="table table-bordered table hover">
                             <thead>
                                 <tr>
                                     <th>Player Name</th>
