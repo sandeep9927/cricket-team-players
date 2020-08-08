@@ -39,14 +39,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            Points Table
                         </h1>
                         <form action="players.php" method="POST" enctype="multipart/form-data">
                             <table class="table table-bordered table hover">
                                 <thead>
                                     <tr>
-                                        <th>NO. </th>
+                                        <th>Standings</th>
                                         <th>Team</th>
                                         <th>Game Played</th>
                                         <th>Wins</th>
@@ -63,7 +62,7 @@
                                     $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `points` AS p ON t.id = p.team_id ";
                                     //$query = "SELECT * FROM match_fixtures";
                                     $select_match = mysqli_query($conn, $query);
-
+                                    $count = 0;
                                     while ($row = mysqli_fetch_assoc($select_match)) {
                                        
                                         $team_id = $row['team_id'];
@@ -73,10 +72,10 @@
                                         $tie = $row['tie'];
                                         $get_points = $row['get_points'];
                                         $team_name = $row['name'];
-
+                                        $count++;
 
                                         echo "<tr>";
-                                        echo "<td>$ponits_id</td>";
+                                        echo "<td>$count</td>";
                                         echo "<td>$team_name</td>";
                                         echo "<td>$game_played</td>";
                                         echo "<td>$wins</td>";

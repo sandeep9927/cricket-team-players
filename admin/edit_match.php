@@ -23,9 +23,13 @@
                                         $get_id_match_edit = $_GET['edit_match'];
                                     
                                    
-                                        $query ="SELECT * FROM `match_fixtures` WHERE `matchFixtureID` = '{$get_id_match_edit}'";
+                                       // $query ="SELECT * FROM `match_fixtures` WHERE `matchFixtureID` = '{$get_id_match_edit}'";
+
+                                        $query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures AS m  JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id WHERE matchFixtureID = $get_id_match_edit";
                                         $run = mysqli_query($conn,$query);
                                         while($row = mysqli_fetch_assoc($run)){
+                                        $teamname1 = $row['team1name'];
+                                        $teamname2 = $row['team2name'];
                                         $teamID1 = $row['teamID1'];
                                         $teamID2 = $row['teamID2'];
                                         $venue = $row['venue'];
@@ -48,7 +52,7 @@
                                             if ($upadte_match) {
                                                 ?>
                                                     <script>
-                                                        alert("match successfully Added !")
+                                                        alert("Match Fixture Updated !")
                                                         window.open('show_all_match.php', '_self')
                                                     </script>
                                                 <?php
@@ -80,26 +84,26 @@
                                     
                                     <td>
                                         <select name="team1">
-                                            <option value="<?php echo $teamID1;?>"><?php echo $teamID1;?></option>
+                                            <option value="<?php echo $teamID1;?>"><?php echo $teamname1;?></option>
                                             <?php
                                             $select_team = "SELECT * FROM `team`";
                                             $select_team_query = mysqli_query($conn, $select_team);
                                             while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                                 $team_id = $fetch_all_team['id'];
                                                 $team_name = $fetch_all_team['name'];
-                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                                echo " <option value='{$team_id}'>$team_name</option>";
                                             }?>
                                         </select>
 
                                         <select name="team2">
-                                        <option value="<?php echo $teamID2;?>"><?php echo $teamID2;?></option>
+                                        <option value="<?php echo $teamID2;?>"><?php echo $teamname2;?></option>
                                             <?php
                                             $select_team = "SELECT * FROM `team`";
                                             $select_team_query = mysqli_query($conn, $select_team);
                                             while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                                 $team_id = $fetch_all_team['id'];
                                                 $team_name = $fetch_all_team['name'];
-                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                                echo " <option value='{$team_id}'>$team_name</option>";
                                             }?>
                                         </select>
                                     </td>

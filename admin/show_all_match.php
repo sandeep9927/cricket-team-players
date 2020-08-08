@@ -37,14 +37,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
+                           Match Stats
                         </h1>
                         <form action="players.php" method="POST" enctype="multipart/form-data">
                             <table class="table table-bordered table hover">
                                 <thead>
                                     <tr>
-                                        <th>matchFixtureID </th>
+                                        <th>S.No</th>
                                         <th>team1</th>
                                         <th>team2</th>
                                         <th>venue</th>
@@ -53,17 +52,22 @@
                                         <th>matchDate</th>
                                         <th>matchTime</th>
                                         <th>Winner Team</th>
-                                        <th>EDit</th>
+                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
 
+
                                     $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
                                     AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
-                                    $select_match = mysqli_query($conn, $show_query);
 
+                                   //$show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
+
+
+                                    $select_match = mysqli_query($conn, $show_query);
+                                    $count = 0;
                                     while ($row = mysqli_fetch_assoc($select_match)) {
                                         $matchFixtureID = $row['matchFixtureID'];
                                         $teamname1 = $row['team1name'];
@@ -78,8 +82,14 @@
 
 
 
+
                                         echo "<tr>";
                                         echo "<td>$matchFixtureID</td>";
+
+                                        $count++;
+                                        echo "<tr>";
+                                        echo "<td>$count</td>";
+
                                         echo "<td>$teamname1</td>";
                                         echo "<td>$teamname2</td>";
 
@@ -88,17 +98,22 @@
                                         echo "<td>$scoreTeam2</td>";
                                         echo "<td>$matchDate</td>";
                                         echo "<td>$matchTime</td>";
-                                        if ($scoreTeam1 > $scoreTeam2) {
+
+                                       
+
+                                        if($scoreTeam1>$scoreTeam2){
                                             echo "<td>$teamname1</td>";
-                                        } elseif ($scoreTeam1 == $scoreTeam2) {
+                                        }elseif($scoreTeam1 == $scoreTeam2){
                                             echo "<td>Draw Match</td>";
-                                        } else {
+                                        }else{
+
                                             echo "<td>$teamname2</td>";
                                         }
 
                                         echo "<td><a href='edit_match.php?edit_match={$matchFixtureID}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='show_all_match.php?delete_match={$matchFixtureID}'><i class='fa fa-trash'></i></a></td>";
                                         echo "<td><a href='#myModal$matchFixtureID'  data-toggle='modal'><i class='fa fa-trash'></i></a></td>";
+
                                     ?>
 
                                         <!-- Modal HTML -->

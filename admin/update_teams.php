@@ -56,7 +56,7 @@
                                     ?>
                                     <script>
                                     alert("Team successfully added")
-                                    window.open("update_teams.php","_self")
+                                    window.open("dashboard.php","_self")
                                     </script>
                                     <?php
                                 }
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class= "form-group">
-                            <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
+                            <input class="btn btn-primary" type="submit" name="update_post" value="Update">
                         </div>
                     </form>
 
