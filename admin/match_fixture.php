@@ -90,7 +90,7 @@
                                         } else {
                                         ?>
                                     <script>
-                                    alert("Failed to Fixed !")
+                                    alert("Failed to Fix !")
                                     window.open('match_fixture.php', '_self')
                                     </script>
                                     <?php
