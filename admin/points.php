@@ -58,29 +58,27 @@
                                     <?php
 
 
-                                    //$show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
-                                    // $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `points` AS p ON t.id = p.team_id ";
+                                    
                                      $query = "select team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
                                      from ((select teamID1 as team,
                                                     (case when winner = teamID1 then 1 else 0 end) as is_win,
                                                     (case when winner = teamID2 then 1 else 0 end) as is_loss,
                                                         (case when winner = teamID1 then 2 else 0 end) as is_points,
-                                                    (case when winner is not null then 1 else 0 end) as is_tie
+                                                    (case when winner is  null then 1 else 0 end) as is_tie
                                              from match_fixtures
                                             ) union all
                                             (select teamID2,
                                                     (case when winner = teamID2 then 1 else 0 end) as is_win,
                                                     (case when winner = teamID1 then 1 else 0 end) as is_loss,
                                              (case when winner = teamID2 then 2 else 0 end) as is_points,
-                                                    (case when winner is not null then 1 else 0 end) as is_tie
+                                                    (case when winner is  null then 1 else 0 end) as is_tie
                                              from match_fixtures
                                             )
                                            
                                            ) t
                                      group by team";
 
-                                    // $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
-                                    // AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
+                                    
                                     $select_match = mysqli_query($conn, $query);
                                     $count = 0;
                                     while ($row = mysqli_fetch_assoc($select_match)) {
