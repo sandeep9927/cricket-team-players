@@ -59,8 +59,15 @@
                                 <tbody>
                                     <?php
 
+
+                                   
+
                                     $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
                                     AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
+
+                                   
+
+
                                     $select_match = mysqli_query($conn, $show_query);
                                     $count = 0;
                                     while ($row = mysqli_fetch_assoc($select_match)) {
@@ -78,6 +85,7 @@
 
 
 
+
                                         echo "<tr>";
                                         $count++;
                                         echo "<tr>";
@@ -89,12 +97,12 @@
                                         echo "<td>$scoreTeam2</td>";
                                         echo "<td>$matchDate</td>";
                                         echo "<td>$matchTime</td>";
-
-                                        if ($scoreTeam1 > $scoreTeam2) {
+                                        if($scoreTeam1>$scoreTeam2){
                                             echo "<td>$teamname1</td>";
-                                        } elseif ($scoreTeam1 == $scoreTeam2) {
+                                        }elseif($scoreTeam1 == $scoreTeam2){
                                             echo "<td>Draw Match</td>";
-                                        } else {
+                                        }else{
+
 
                                             echo "<td>$teamname2</td>";
                                         }
@@ -102,6 +110,7 @@
                                         echo "<td><a href='edit_match.php?edit_match={$matchFixtureID}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         //echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='show_all_match.php?delete_match={$matchFixtureID}'><i class='fa fa-trash'></i></a></td>";
                                         echo "<td><a href='#myModal$matchFixtureID'  data-toggle='modal'><i class='fa fa-trash'></i></a></td>";
+
                                     ?>
 
                                         <!-- Modal HTML -->
