@@ -69,9 +69,9 @@
                      while($fetch_team = mysqli_fetch_assoc($query_run)){
                        $team_id = $fetch_team['id'];}
                     ?>
-                   <!--  <li>
+                    <li>
                         <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
