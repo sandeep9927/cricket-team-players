@@ -7,20 +7,20 @@
         $query = "DELETE FROM `match_fixtures` WHERE `matchFixtureID` = '{$delete_match}'";
         $delete_query = mysqli_query($conn, $query);
         if ($delete_query) {
-            ?>
+    ?>
             <script>
-            alert("match successfully deleted !")
-            window.open('show_all_match.php', '_self')
+                alert("match successfully deleted !")
+                window.open('show_all_match.php', '_self')
             </script>
-            <?php
-                } else {
-                ?>
+        <?php
+        } else {
+        ?>
             <script>
-            alert("query failed")
-            window.open('show_all_match.php', '_self')
+                alert("query failed")
+                window.open('show_all_match.php', '_self')
             </script>
-            <?php
-                }
+    <?php
+        }
     }
 
     ?>
@@ -59,24 +59,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    //$teamid = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID2";
-                                    //$teamid2 = mysqli_query($conn, $teamid);
-                                    //$show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
-                                    $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
 
-
-                                    $query ="SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
+                                    $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
                                     AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
-                                    //$show_query = "SELECT m.*, t.name as teamname1,t2.name as teamname2  FROM match_fixtures AS m join team as t1 on m.teamID1 = t1.";
-                                    
-                                    $select_match = mysqli_query($conn, $query);
-
-                                    while ($row = mysqli_fetch_assoc($select_match)) {
-                                        $matchFixtureID = $row['matchFixtureID'];
-                                        $team1name = $row['team1name'];
-                                        $team2name = $row['team2name'];
-
-                                    //$query = "SELECT * FROM match_fixtures";
                                     $select_match = mysqli_query($conn, $show_query);
 
                                     while ($row = mysqli_fetch_assoc($select_match)) {
@@ -95,13 +80,6 @@
 
                                         echo "<tr>";
                                         echo "<td>$matchFixtureID</td>";
-                                        echo "<td>$team1name</td>";
-                                        echo "<td>$team2name</td>";
-                                        //echo "<td>$teamID2</td>";
-
-
-                                        echo "<tr>";
-                                        echo "<td>$matchFixtureID</td>";
                                         echo "<td>$teamname1</td>";
                                         echo "<td>$teamname2</td>";
 
@@ -110,58 +88,50 @@
                                         echo "<td>$scoreTeam2</td>";
                                         echo "<td>$matchDate</td>";
                                         echo "<td>$matchTime</td>";
-                                        if($scoreTeam1>$scoreTeam2){
-                                            echo "<td>$team1name</td>";
-                                        }elseif($scoreTeam1 == $scoreTeam2){
+                                        if ($scoreTeam1 > $scoreTeam2) {
+                                            echo "<td>$teamname1</td>";
+                                        } elseif ($scoreTeam1 == $scoreTeam2) {
                                             echo "<td>Draw Match</td>";
-                                        }else{
-                                            echo "<td>$team2name</td>";
+                                        } else {
+                                            echo "<td>$teamname2</td>";
                                         }
-                                        
+
                                         echo "<td><a href='edit_match.php?edit_match={$matchFixtureID}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='show_all_match.php?delete_match={$matchFixtureID}'><i class='fa fa-trash'></i></a></td>";
                                         echo "<td><a href='#myModal$matchFixtureID'  data-toggle='modal'><i class='fa fa-trash'></i></a></td>";
-
-
-
                                     ?>
 
-
-
-
-                                    <!-- Modal HTML -->
-                                    <div id="myModal<?php echo $matchFixtureID ?>" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-                                                    <div class="icon-box">
-                                                        <i class="material-icons">&#xE5CD;</i>
+                                        <!-- Modal HTML -->
+                                        <div id="myModal<?php echo $matchFixtureID ?>" class="modal fade">
+                                            <div class="modal-dialog modal-confirm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header flex-column">
+                                                        <div class="icon-box">
+                                                            <i class="material-icons">&#xE5CD;</i>
+                                                        </div>
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                     </div>
-                                                    <h4 class="modal-title w-100">Are you sure?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-hidden="true">&times;</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Do you really want to delete these records? This process cannot
-                                                        be undone.</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-danger">
-                                                        <?php
+                                                    <div class="modal-body">
+                                                        <p>Do you really want to delete these records? This process cannot
+                                                            be undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <?php
                                                             echo "<a onclick='popUp()' href='show_all_match.php?delete_match={$matchFixtureID}'>Delete</a>";
                                                             echo "<tr>"; ?></button>
-                                                    <script>
-                                                    function popUp() {
-                                                        swal("Good job!", "You clicked the button!", "success")
-                                                        window.open("show_all_match.php", "_self")
-                                                    }
-                                                    </script>
+                                                        <script>
+                                                            function popUp() {
+                                                                swal("Good job!", "You clicked the button!", "success")
+                                                                window.open("show_all_match.php", "_self")
+                                                            }
+                                                        </script>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php }; ?>
                                 </tbody>
                             </table>

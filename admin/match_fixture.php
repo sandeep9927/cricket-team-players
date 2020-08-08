@@ -21,12 +21,12 @@
                             <table border="1" class="table table-bordered table hover">
                                 <tr>
 
-                                    <td width="73" align="center"><strong>Teams</strong></td>
-                                    <td><strong>Venue</strong></td>
-                                    <td><strong>Date / Time</strong></td>
-                                    <td><strong>Team1 Score</strong></td>
-                                    <td><strong>Team2 Score</strong></td>
-                                    <td><strong>Action</strong></td>
+                                <td width="73" align="center"><strong>Teams</strong></td>
+                                    <td style="width: 100px;" align="center"><strong>Venue</strong></td>
+                                    <td width="147" align="center"><strong>Date / Time</strong></td>
+                                    <td width="50"><strong>Team1 Score</strong></td>
+                                    <td width="50"><strong>Team2 Score</strong></td>
+                                    <td width="64" align="center"><strong>Action</strong></td>
                                 </tr>
                                 <tr>
                                     <?php
