@@ -88,10 +88,14 @@
                                         <?php
                                         } else {
                                         ?>
-                                            <script>
-                                                alert("Failed to Fixed !")
-                                                window.open('match_fixture.php', '_self')
-                                            </script>
+
+                                            
+
+                                    <script>
+                                    alert("Failed to Fix !")
+                                    window.open('match_fixture.php', '_self')
+                                    </script>
+
                                     <?php
                                         }
                                     }
@@ -106,7 +110,7 @@
                                             while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                                 $team_id = $fetch_all_team['id'];
                                                 $team_name = $fetch_all_team['name'];
-                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                                echo " <option value='{$team_id}'>$team_name</option>";
                                             } ?>
                                         </select>
                                         <!-- <span id="teamerror1"></span> -->
@@ -118,7 +122,7 @@
                                             while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                                 $team_id = $fetch_all_team['id'];
                                                 $team_name = $fetch_all_team['name'];
-                                                echo " <option value='{$team_id}'>$team_id.$team_name</option>";
+                                                echo " <option value='{$team_id}'>$team_name</option>";
                                             } ?>
                                         </select><br>
                                         <span id="teamerror2" style="color:red;"></span>

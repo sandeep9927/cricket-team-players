@@ -8,7 +8,7 @@
 ?>
             <script>
                 alert("player successfully deleted !")
-                window.open('players.php', '_self')
+                window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
             </script>
         <?php
         } else {
@@ -39,11 +39,11 @@
                         <h1 class="text-center page-header">
                             <?php 
                                 if (isset($_GET['team_id'])) {
-                                $team_id = $_GET['team_id'];
-                                $team_query = "SELECT * FROM `team` WHERE `id` = {$team_id}";
-                                $run = mysqli_query($conn, $team_query);
-                                $run = mysqli_fetch_assoc($run);
-                                $team_name = $run['name'];
+                                    $team_id = $_GET['team_id'];
+                                    $team_query = "SELECT * FROM `team` WHERE `id` = {$team_id}";
+                                    $run = mysqli_query($conn, $team_query);
+                                    $run = mysqli_fetch_assoc($run);
+                                    $team_name = $run['name'];
                                 }
 
                                 echo $team_name;
