@@ -39,17 +39,16 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            Points Table
                         </h1>
                         <form action="players.php" method="POST" enctype="multipart/form-data">
                             <table class="table table-bordered table hover">
                                 <thead>
                                     <tr>
-                                        <th>NO. </th>
+                                       <th>S.N.</th>
                                         <th>Team</th>
-                                        <th>Game Played</th>
                                         <th>Wins</th>
+                                        <th>loss</th>
                                         <th>Tie</th>
                                         <th>Points</th>
                                      
@@ -60,27 +59,49 @@
 
 
                                     //$show_query = "SELECT m.*, t.* FROM team AS t INNER JOIN match_fixtures AS m ON t.id = m.teamID1";
-                                    $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `points` AS p ON t.id = p.team_id ";
-                                    //$query = "SELECT * FROM match_fixtures";
-                                    $select_match = mysqli_query($conn, $query);
+                                    // $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `points` AS p ON t.id = p.team_id ";
+                                     $query = "select team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
+                                     from ((select teamID1 as team,
+                                                    (case when winner = teamID1 then 1 else 0 end) as is_win,
+                                                    (case when winner = teamID2 then 1 else 0 end) as is_loss,
+                                                        (case when winner = teamID1 then 2 else 0 end) as is_points,
+                                                    (case when winner is not null then 1 else 0 end) as is_tie
+                                             from match_fixtures
+                                            ) union all
+                                            (select teamID2,
+                                                    (case when winner = teamID2 then 1 else 0 end) as is_win,
+                                                    (case when winner = teamID1 then 1 else 0 end) as is_loss,
+                                             (case when winner = teamID2 then 2 else 0 end) as is_points,
+                                                    (case when winner is not null then 1 else 0 end) as is_tie
+                                             from match_fixtures
+                                            )
+                                           
+                                           ) t
+                                     group by team";
 
+                                    // $show_query = "SELECT m.*, t1.name AS team1name, t2.name AS team2name FROM match_fixtures 
+                                    // AS m JOIN team AS t1 ON m.teamID1= t1.id JOIN team AS t2 ON m.teamID2 = t2.id";
+                                    $select_match = mysqli_query($conn, $query);
+                                    $count = 0;
                                     while ($row = mysqli_fetch_assoc($select_match)) {
                                        
-                                        $team_id = $row['team_id'];
-                                        $ponits_id = $row['ponits_id'];
-                                        $game_played = $row['game_played'];
-                                        $wins = $row['wins'];
-                                        $tie = $row['tie'];
-                                        $get_points = $row['get_points'];
-                                        $team_name = $row['name'];
-
+                                        
+                                       
+                                        $team = $row['team'];
+                                        $wins = $row['num_wins'];
+                                        $loss = $row['num_losses'];
+                                        $tie = $row['num_ties'];
+                                        $get_points = $row['points'];
+                                        
+                                        $count++;
 
                                         echo "<tr>";
-                                        echo "<td>$ponits_id</td>";
-                                        echo "<td>$team_name</td>";
-                                        echo "<td>$game_played</td>";
+                                        echo "<td>$count</td>";
+                                        echo "<td>$team</td>";
                                         echo "<td>$wins</td>";
+                                        echo "<td>$loss</td>";
                                         echo "<td>$tie</td>";
+                                        
                                         echo "<td>$get_points</td>";
                                        
                                         echo "<tr>";

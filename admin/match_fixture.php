@@ -21,7 +21,7 @@
                             <table border="1" class="table table-bordered table hover">
                                 <tr>
 
-                                <td width="73" align="center"><strong>Teams</strong></td>
+                                    <td width="73" align="center"><strong>Teams</strong></td>
                                     <td style="width: 100px;" align="center"><strong>Venue</strong></td>
                                     <td width="147" align="center"><strong>Date / Time</strong></td>
                                     <td width="50"><strong>Team1 Score</strong></td>
@@ -42,14 +42,13 @@
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
                                             VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','$get_team1')";
                                             $run = mysqli_query($conn, $query);
-                                        } elseif($score1 < $score2){
+                                        } elseif ($score1 < $score2) {
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
                                             VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','$get_team2')";
                                             $run = mysqli_query($conn, $query);
-                                        
                                         } else {
                                             $query = "INSERT INTO `match_fixtures`(`teamID1`, `teamID2`,`matchDate`, `matchTime`, `venue`, `scoreTeam1`, `scoreTeam2`,`winner`)
-                                            VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','Draw')";
+                                            VALUES (' $get_team1','$get_team2','$date','$time','$venue','$score1','$score2','')";
                                             $run = mysqli_query($conn, $query);
                                         }
 
@@ -82,17 +81,17 @@
 
 
                                     ?>
-                                    <script>
-                                    alert("Match successfully Fixed !")
-                                    window.open('match_fixture.php', '_self')
-                                    </script>
-                                    <?php
+                                            <script>
+                                                alert("Match successfully Fixed !")
+                                                window.open('match_fixture.php', '_self')
+                                            </script>
+                                        <?php
                                         } else {
                                         ?>
-                                    <script>
-                                    alert("Failed to Fixed !")
-                                    window.open('match_fixture.php', '_self')
-                                    </script>
+                                            <script>
+                                                alert("Failed to Fixed !")
+                                                window.open('match_fixture.php', '_self')
+                                            </script>
                                     <?php
                                         }
                                     }
@@ -133,8 +132,7 @@
                                         $mysqltime = date('h:i:s');
 
                                         ?>
-                                        <input type="date" name="fixdate" value="<?php echo $mysqldate; ?>" /><input
-                                            type="time" name="fixtime" value="<?php echo $mysqltime; ?>" /></td>
+                                        <input type="date" name="fixdate" value="<?php echo $mysqldate; ?>" /><input type="time" name="fixtime" value="<?php echo $mysqltime; ?>" /></td>
                                     <td><input type="number" name="score1" style="width:40px"></td>
                                     <td><input type="number" name="score2" style="width:40px"></td>
                                     <td><input type="submit" value="submit" name="submit" />

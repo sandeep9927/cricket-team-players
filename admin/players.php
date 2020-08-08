@@ -62,6 +62,7 @@
 
                                     $query = "SELECT p.*, t.name FROM `team` AS t INNER JOIN `team_players` AS p ON t.id = p.team_id ";
                                     $select_players = mysqli_query($conn, $query);
+                                    $count = 0;
 
                                     while ($row = mysqli_fetch_assoc($select_players)) {
                                         $player_id = $row['player_id'];
@@ -70,10 +71,10 @@
                                         $player_name = $row['player_name'];
                                         $jersey_num = $row['jersey_num'];
                                         $team_name = $row['name'];
-
+                                        $count++;
 
                                         echo "<tr>";
-                                        echo "<td>$player_id</td>";
+                                        echo "<td>$count</td>";
                                         echo "<td>$team_name</td>";
                                         echo "<td><img style='width: 70px; height:50px' src='../image/$player_image' alt='no image' class='img-responsive' style=''></td>";
 

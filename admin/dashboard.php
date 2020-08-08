@@ -17,7 +17,7 @@ if (isset($_GET['delete'])) {
     } else {
     ?>
         <script>
-            alert("query failed")
+            alert("Can't delete...!! This team is scheduled to be play a match")
             window.open('dashboard.php', '_self')
         </script>
 <?php
@@ -40,8 +40,7 @@ if (isset($_GET['delete'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            Teams
                         </h1>
 
                         <div class="col-xs-4" style="padding:0px">
@@ -50,8 +49,8 @@ if (isset($_GET['delete'])) {
                         <table class="table table-bordered table hover">
                             <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>image</th>
+                                    <th>S.No</th>
+                                    <th>Image</th>
                                     <th>Team_Name</th>
                                     <th>State</th>
                                     <th>Edit</th>
@@ -63,14 +62,15 @@ if (isset($_GET['delete'])) {
                                 <?php
                                 $query = "SELECT * FROM team";
                                 $query_run = mysqli_query($conn, $query);
+                                $count = 0;
                                 while ($fetch_team = mysqli_fetch_assoc($query_run)) {
                                     $team_id = $fetch_team['id'];
                                     $team_name = $fetch_team['name'];
                                     $team_city = $fetch_team['city'];
                                     $team_image = $fetch_team['image'];
-
+                                    $count++;
                                     echo "<tr>";
-                                    echo "<td>$team_id</td>";
+                                    echo "<td>$count</td>";
                                     echo "<td><a href=''><img style='width: 60px; height:40px' src='../image/$team_image' alt='no image' class='img-responsive' style=''></a></td>";
                                     echo "<td><a href='team_players_crud.php?team_id={$team_id}'>$team_name</a></td>";
                                     echo "<td>$team_city</td>";

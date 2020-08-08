@@ -29,11 +29,11 @@
           <table border="" style="height: 40px; width:700px;margin-left:25% " class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Number</th>
+                <th scope="col">S.N.</th>
                 <th scope="col">Photo</th>
-                <th scope="col">player name</th>
-                <th scope="col">player ID</th>
-                <th scope="col">player jersey</th>
+                <th scope="col">Player name</th>
+                <th scope="col">Player ID</th>
+                <th scope="col">Player jersey</th>
               </tr>
             </thead>
 
