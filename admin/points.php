@@ -57,10 +57,8 @@
                                 <tbody>
                                     <?php
 
-
-                                    
-                                     $query = "SELECT team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
-                                     from ((select teamID1 as team,
+                                     $query = "select teamID1,name as team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
+                                     from ((select teamID1 ,
                                                     (case when winner = teamID1 then 1 else 0 end) as is_win,
                                                     (case when winner = teamID2 then 1 else 0 end) as is_loss,
                                                     (case when winner = teamID1 then 2 else 0 end) as is_points,
@@ -75,8 +73,8 @@
                                              from match_fixtures
                                             )
                                            
-                                           ) t
-                                     group by team";
+                                           ) t left join team t2 on teamID1 = t2.id
+                                     group by teamID1";
 
                                     
                                     $select_match = mysqli_query($conn, $query);
