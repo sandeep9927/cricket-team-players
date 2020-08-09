@@ -40,6 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <?php
                                     if (isset($_POST['submit'])) {
 
@@ -68,6 +69,7 @@
                                                 alert("Failed to Added !")
                                                 window.open('add_players.php', '_self')
                                             </script>
+
                                     <?php
                                         }
                                     }
@@ -75,6 +77,7 @@
 
                                     ?>
                                     <tr>
+
                                         <td><input type="text" name="name" placeholder="player name" id="playerName"> <br>
                                             <span id="nameError" style="color: red;"></span></td>
 
@@ -86,6 +89,7 @@
                                             <span id="ImageError" style="color: red;"></span></td>
                                        
                                         <td><input type="submit" name="submit" value="ADD"></td>
+
                                     </tr>
                                 </tbody>
                             </table>
