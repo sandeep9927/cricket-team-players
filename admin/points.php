@@ -76,7 +76,7 @@
                                             )
                                            
                                            ) t left join team t2 on teamID1 = t2.id
-                                     group by teamID1 ";
+                                     group by teamID1";
 
                                     
                                     $select_match = mysqli_query($conn, $query);
