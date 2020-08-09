@@ -59,7 +59,7 @@
                                 ?>
                                     <script>
                                         alert("player successfully Added !")
-                                        window.open('players.php', '_self')
+                                        window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
                                     </script>
                                 <?php
                                 } else {
