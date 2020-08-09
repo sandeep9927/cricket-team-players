@@ -59,10 +59,6 @@
                                 ?>
                                     <script>
                                         alert("player successfully Added !")
-<<<<<<< HEAD
-=======
-                                        //window.open('players.php', '_self')
->>>>>>> origin
                                         window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
                                     </script>
                                 <?php
