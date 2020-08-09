@@ -89,13 +89,13 @@
                                         <span id="ImageError" style="color: red;"></span></td>
                                     <td><select name="team" id="" style="width:100px;">
                                             <?php
-                                            $select_team = "SELECT * FROM `team`";
-                                            $select_team_query = mysqli_query($conn, $select_team);
-                                            while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
-                                                $team_id = $fetch_all_team['id'];
-                                                $team_name = $fetch_all_team['name'];
-                                                echo " <option value='{$team_id}'>$team_name</option>";
-                                            }
+                                            // $select_team = "SELECT * FROM `team`";
+                                            // $select_team_query = mysqli_query($conn, $select_team);
+                                            // while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
+                                            //     $team_id = $fetch_all_team['id'];
+                                            //     $team_name = $fetch_all_team['name'];
+                                                echo " <option value='{$team_id}'>$team_id</option>";
+                                            //}
 
                                             ?>
                                         </select></td>
