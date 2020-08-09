@@ -25,8 +25,7 @@
                 <div class="row" style="width: auto;">
                     <div class="col-lg-12">
                         <h1 class="text-center page-header">
-                            Welcome
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            Update Player
                         </h1>
 
                         <?php
@@ -59,16 +58,27 @@
                             }
                             $query = "UPDATE `team_players` SET `player_name`=' $player_name',`player_img`='$player_image',`jersey_num`='$jersey_num' WHERE `player_id` ='$get_player_id'";
                             $update_player = mysqli_query($conn, $query);
-                            if($update_player){?>
-                                  <script>
-                                        alert("player successfully updated !")
-                                        //window.open('players.php', '_self')
+                            if ($update_player) {
+                                $select_team = "SELECT * FROM `team`";
+                                $select_team_query = mysqli_query($conn, $select_team);
+                                while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
+                                    $team_id = $fetch_all_team['id'];
+    
+                                }
+                                ?>
+                                    <script>
+                                        alert("player successfully Added !")
                                         window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
                                     </script>
-                           <?php }
-                            else {
-                                die("Failed...") . mysqli_error($conn);
-                            }
+                                <?php
+                                } else {
+                                ?>
+                                    <script>
+                                        alert("Failed to Added !")
+                                        window.open('add_players.php', '_self')
+                                    </script>
+                                    <?php
+                                        }
                         }
                     }
 
@@ -95,18 +105,17 @@
                                     <td><input type="text" name="jsnumber" value="<?php echo  $jersey_num; ?>" id="jsnumber">
                                         <br>
                                         <span id="jsError" style="color: red;"></span></td>
-                                    <td><img width=60 src="../image/<?php echo $player_image?>"><input type="file" name="image" id="imge">
+                                    <td><img width=60 src="../image/<?php echo $player_image?>"><input type="file" name="image" id="img">
                                         <br>
                                         <span id="ImageError" style="color: red;"></span></td>
                                     <td><select name="team" id="" style="width:100px;">
-                                        <option value="<?php echo $team_name ?>"></option>
                                         <?php
                                         $select_team = "SELECT * FROM `team`";
                                         $select_team_query = mysqli_query($conn, $select_team);
                                         while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                             $team_id = $fetch_all_team['id'];
                                             $team_name = $fetch_all_team['name'];
-                                            echo " <option value='{$team_id}'>$team_name</option>";
+                                            echo " <option value='{$team_id}'>$team_id.$team_name</option>";
                                         }
 
                                         ?>

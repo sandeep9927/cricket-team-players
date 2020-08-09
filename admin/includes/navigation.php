@@ -25,9 +25,7 @@
                         ?> 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
+                        
                         <li>
                             <a href="../logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -59,9 +57,7 @@
                      while($fetch_team = mysqli_fetch_assoc($query_run)){
                        $team_id = $fetch_team['id'];}
                     ?>
-                    <li>
-                        <a href='players.php'><i class="fa fa-fw fa-user"></i> Players</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
