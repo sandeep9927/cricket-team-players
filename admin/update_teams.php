@@ -55,7 +55,7 @@
                                 }else{
                                     ?>
                                     <script>
-                                    alert("Team successfully added")
+                                    alert("Team successfully updated")
                                     window.open("dashboard.php","_self")
                                     </script>
                                     <?php
