@@ -59,18 +59,18 @@
 
 
                                     
-                                     $query = "select team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
+                                     $query = "SELECT team, sum(is_win) as num_wins, sum(is_loss) as num_losses,sum(is_points) as points, sum(is_tie) as num_ties
                                      from ((select teamID1 as team,
                                                     (case when winner = teamID1 then 1 else 0 end) as is_win,
                                                     (case when winner = teamID2 then 1 else 0 end) as is_loss,
-                                                        (case when winner = teamID1 then 2 else 0 end) as is_points,
+                                                    (case when winner = teamID1 then 2 else 0 end) as is_points,
                                                     (case when winner is  null then 1 else 0 end) as is_tie
                                              from match_fixtures
                                             ) union all
                                             (select teamID2,
                                                     (case when winner = teamID2 then 1 else 0 end) as is_win,
                                                     (case when winner = teamID1 then 1 else 0 end) as is_loss,
-                                             (case when winner = teamID2 then 2 else 0 end) as is_points,
+                                                    (case when winner = teamID2 then 2 else 0 end) as is_points,
                                                     (case when winner is  null then 1 else 0 end) as is_tie
                                              from match_fixtures
                                             )

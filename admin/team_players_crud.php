@@ -8,7 +8,7 @@
 ?>
             <script>
                 alert("player successfully deleted !")
-                window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
+                window.open('dashboard.php', '_self')
             </script>
         <?php
         } else {
