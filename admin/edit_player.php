@@ -63,15 +63,16 @@
                                 $select_team_query = mysqli_query($conn, $select_team);
                                 while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
                                     $team_id = $fetch_all_team['id'];
-    
+                                    ?>
+                                <script>
+                                    alert("player successfully updated !")
+                                    window.open('team_players_crud.php?team_id=<?php echo $team_id ?>', '_self')
+                                </script>
+                            <?php
                                 }
-                                ?>
-                                    <script>
-                                        alert("player successfully Added !")
-                                        window.open('team_players_crud.php?team_id=<?php echo $team_id?>', '_self')
-                                    </script>
-                                <?php
-                                } else {
+                        
+                        
+                            } else {
                                 ?>
                                     <script>
                                         alert("Failed to Added !")
@@ -91,7 +92,7 @@
                                     <th>Player Name</th>
                                     <th>Player Jersey Number</th>
                                     <th>Player Image</th>
-                                    <th>Choose Team</th>
+                                    
                                     <th>Add player</th>
                                 </tr>
                             </thead>
@@ -108,18 +109,7 @@
                                     <td><img width=60 src="../image/<?php echo $player_image?>"><input type="file" name="image" id="img">
                                         <br>
                                         <span id="ImageError" style="color: red;"></span></td>
-                                    <td><select name="team" id="" style="width:100px;">
-                                        <?php
-                                        $select_team = "SELECT * FROM `team`";
-                                        $select_team_query = mysqli_query($conn, $select_team);
-                                        while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
-                                            $team_id = $fetch_all_team['id'];
-                                            $team_name = $fetch_all_team['name'];
-                                            echo " <option value='{$team_id}'>$team_id.$team_name</option>";
-                                        }
-
-                                        ?>
-                                        </select></td>
+                                    
                                     <td><input type="submit" name="update_player" value="Update"></td>
                                 </tr>
                             </tbody>

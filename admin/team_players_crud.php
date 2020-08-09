@@ -9,15 +9,16 @@ if (isset($_GET['delete_player'])) {
         $select_team = "SELECT * FROM `team`";
         $select_team_query = mysqli_query($conn, $select_team);
         while ($fetch_all_team = mysqli_fetch_assoc($select_team_query)) {
-            $team_id = $fetch_all_team['id'];
-        }
-
-?>
+            $team_id = $fetch_all_team['team_id'];
+            ?>
         <script>
             alert("player successfully deleted !")
             window.open('team_players_crud.php?team_id=<?php echo $team_id ?>', '_self')
         </script>
     <?php
+        }
+
+
     } else {
     ?>
         <script>
@@ -68,8 +69,7 @@ if (isset($_GET['delete_player'])) {
                                 <tr>
                                     <th>Number</th>
                                     <th>image</th>
-                                    <th>Player_Name</th>
-                                    <th>Player ID</th>
+                                    <th>Player_Name</th>                                   
                                     <th>Jersey Number</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -94,7 +94,6 @@ if (isset($_GET['delete_player'])) {
                                         echo "<td>$count</td>";
                                         echo "<td><img style='width: 70px; height:50px' src='../image/$player_image' alt='no image' class='img-responsive' style=''></td>";
                                         echo "<td>$player_name</td>";
-                                        echo "<td>$player_id</td>";
                                         echo "<td>$player_jersey_number</td>";
                                         echo "<td><a href='edit_player.php?edit_player={$player_id}'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
                                         echo "<td><a onClick=\"Javascript:return confirm('Please confirm deletion');\" href='team_players_crud.php?delete_player={$player_id}'><i class='fa fa-trash'></i></a></td>";
